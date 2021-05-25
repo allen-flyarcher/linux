@@ -1389,6 +1389,8 @@ static int pci_pericom_setup(struct serial_private *priv,
 		return 1;
 
 	port->port.set_divisor = pericom_do_set_divisor;
+	port->port.type = PORT_PI7C9X;
+	port->port.flags |= UPF_FIXED_TYPE;
 
 	return setup_port(priv, port, bar, offset, board->reg_shift);
 }
@@ -1415,6 +1417,8 @@ static int pci_pericom_setup_four_at_eight(struct serial_private *priv,
 		return 1;
 
 	port->port.set_divisor = pericom_do_set_divisor;
+	port->port.type = PORT_PI7C9X;
+	port->port.flags |= UPF_FIXED_TYPE;
 
 	return setup_port(priv, port, bar, offset, board->reg_shift);
 }

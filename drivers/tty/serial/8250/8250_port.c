@@ -263,6 +263,14 @@ static const struct serial8250_config uart_config[] = {
 				  UART_FCR7_64BYTE,
 		.flags		= UART_CAP_FIFO,
 	},
+	[PORT_PI7C9X] = {
+		.name		= "PI7C9X",
+		.fifo_size	= 128,
+		.tx_loadsz	= 128,
+		.fcr		= UART_FCR_ENABLE_FIFO | UART_FCR_R_TRIG_10 |
+				  UART_FCR_T_TRIG_10,
+		.flags		= UART_CAP_FIFO,
+	},
 	[PORT_RT2880] = {
 		.name		= "Palmchip BK-3103",
 		.fifo_size	= 16,
@@ -2131,6 +2139,13 @@ static void serial8250_put_poll_char(struct uart_port *port,
 	 *	Send the character out.
 	 */
 	serial_port_out(port, UART_TX, c);
+
+	if (port->type == PORT_PI7C9X) {
+		/*
+		 * Enable full 128 FIFO
+		 */
+		serial_port_out(port, UART_PERICOM_EFR, UART_EFR_ECB);
+	}
 
 	/*
 	 *	Finally, wait for transmitter to become empty
