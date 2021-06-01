@@ -1,3 +1,16 @@
+linux-hwe-4.8 (5.8.0-54.61~20.04.3~archer2) UNRELEASED; urgency=medium
+
+  * Update CONFIG_8250_RUNTIME_UARTS from 48 to 56
+
+ --  <allen@archer.com>  Tue, 01 Jun 2021 10:14:30 -0700
+
+linux-hwe-4.8 (5.8.0-54.61~20.04.2~archer1) UNRELEASED; urgency=medium
+
+  * Update CONFIG_8250_RUNTIME_UARTS from 32 to 48
+  * Apply pericom UART patch to enable FIFO
+
+ -- Allen <allen@archer.com>  Tue, 25 May 2021 13:04:55 -0700
+
 linux-hwe-5.8 (5.8.0-54.61~20.04.1) focal; urgency=medium
 
   * focal/linux-hwe-5.8: 5.8.0-54.61~20.04.1 -proposed tracker (LP: #1927591)
