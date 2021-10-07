@@ -1,5 +1,12 @@
 linux-hwe-4.8 (5.8.0-54.61~20.04.3~archer4) UNRELEASED; urgency=medium
 
+  * UART patch to fix pericom 128byte FIFO
+  * CAN patch to forcibly enable one-shot mode
+
+ --  <allen@archer.com>  Thu, 07 Oct 2021 09:21:00 -0700
+
+linux-hwe-4.8 (5.8.0-54.61~20.04.3~archer4) UNRELEASED; urgency=medium
+
   * Another no change build to change build config to add more packages
 
  --  <allen@archer.com>  Thu, 03 Jun 2021 12:42:27 -0700
