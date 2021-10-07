@@ -1407,8 +1407,10 @@ static int pci_pericom_setup_four_at_eight(struct serial_private *priv,
 	else
 		offset += idx * board->uart_offset;
 
+	/* Four port cards, and only four port cards, have the fourth
+ 	* port where you would expect the eight port. */
 	if (idx==3)
-		offset = 0x38;
+		offset = 7 * board->uart_offset;
 
 	maxnr = (pci_resource_len(priv->dev, bar) - board->first_offset) >>
 		(board->reg_shift + 3);
@@ -3658,28 +3660,28 @@ static struct pciserial_board pci_boards[] = {
 	 * Pericom PI7C9X795[1248] Uno/Dual/Quad/Octal UART
 	 */
 	[pbn_pericom_PI7C9X7951] = {
-		.flags          = FL_BASE0,
+		.flags          = FL_BASE1,
 		.num_ports      = 1,
 		.base_baud      = 921600,
-		.uart_offset	= 0x8,
+		.uart_offset	= 0x200,
 	},
 	[pbn_pericom_PI7C9X7952] = {
-		.flags          = FL_BASE0,
+		.flags          = FL_BASE1,
 		.num_ports      = 2,
 		.base_baud      = 921600,
-		.uart_offset	= 0x8,
+		.uart_offset	= 0x200,
 	},
 	[pbn_pericom_PI7C9X7954] = {
-		.flags          = FL_BASE0,
+		.flags          = FL_BASE1,
 		.num_ports      = 4,
 		.base_baud      = 921600,
-		.uart_offset	= 0x8,
+		.uart_offset	= 0x200,
 	},
 	[pbn_pericom_PI7C9X7958] = {
-		.flags          = FL_BASE0,
+		.flags          = FL_BASE1,
 		.num_ports      = 8,
 		.base_baud      = 921600,
-		.uart_offset	= 0x8,
+		.uart_offset	= 0x200,
 	},
 	[pbn_sunix_pci_1s] = {
 		.num_ports	= 1,

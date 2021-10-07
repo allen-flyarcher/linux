@@ -266,7 +266,7 @@ static const struct serial8250_config uart_config[] = {
 	[PORT_PI7C9X] = {
 		.name		= "PI7C9X",
 		.fifo_size	= 128,
-		.tx_loadsz	= 128,
+		.tx_loadsz	= 64,
 		.fcr		= UART_FCR_ENABLE_FIFO | UART_FCR_R_TRIG_10 |
 				  UART_FCR_T_TRIG_10,
 		.flags		= UART_CAP_FIFO,
@@ -2142,7 +2142,7 @@ static void serial8250_put_poll_char(struct uart_port *port,
 
 	if (port->type == PORT_PI7C9X) {
 		/*
-		 * Enable full 128 FIFO
+		 * Enable full 128 FIFO. EFR[4] => enhanced mode
 		 */
 		serial_port_out(port, UART_PERICOM_EFR, UART_EFR_ECB);
 	}
