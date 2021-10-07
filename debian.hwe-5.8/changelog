@@ -1,4 +1,4 @@
-linux-hwe-4.8 (5.8.0-54.61~20.04.3~archer4) UNRELEASED; urgency=medium
+linux-hwe-4.8 (5.8.0-54.61~20.04.3~archer5) UNRELEASED; urgency=medium
 
   * UART patch to fix pericom 128byte FIFO
   * CAN patch to forcibly enable one-shot mode
