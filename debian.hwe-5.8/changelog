@@ -1,3 +1,9 @@
+linux-hwe-4.8 (5.8.0-54.61~20.04.3~archer6) UNRELEASED; urgency=medium
+
+  * Fix the UART patch further
+
+ --  <allen@archer.com>  Tue, 15 Feb 2022 11:03:00 -0800
+
 linux-hwe-4.8 (5.8.0-54.61~20.04.3~archer5) UNRELEASED; urgency=medium
 
   * UART patch to fix pericom 128byte FIFO
