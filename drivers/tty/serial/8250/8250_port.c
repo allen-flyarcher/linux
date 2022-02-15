@@ -2140,13 +2140,6 @@ static void serial8250_put_poll_char(struct uart_port *port,
 	 */
 	serial_port_out(port, UART_TX, c);
 
-	if (port->type == PORT_PI7C9X) {
-		/*
-		 * Enable full 128 FIFO. EFR[4] => enhanced mode
-		 */
-		serial_port_out(port, UART_PERICOM_EFR, UART_EFR_ECB);
-	}
-
 	/*
 	 *	Finally, wait for transmitter to become empty
 	 *	and restore the IER
@@ -2210,6 +2203,13 @@ int serial8250_do_startup(struct uart_port *port)
 		 * comparator) to be 0x20 for correct operation.
 		 */
 		serial_port_out(port, UART_NPCM_TOR, UART_NPCM_TOIE | 0x20);
+	}
+
+	if (port->type == PORT_PI7C9X) {
+		/*
+		 * Enable full 128 FIFO. EFR[4] => enhanced mode
+		 */
+		serial_port_out(port, UART_PERICOM_EFR, UART_EFR_ECB);
 	}
 
 #ifdef CONFIG_SERIAL_8250_RSA
